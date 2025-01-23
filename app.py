@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 
+from water import Water
+
 class App():
     def __init__(self, WIDTH, HEIGHT, CAPTION, FPS):
         self.awake((WIDTH, HEIGHT), CAPTION, FPS)
@@ -20,7 +22,7 @@ class App():
             self.inputs[key_code] = 0
 
     def start(self):
-        pass
+        self.all_sprites.add(Water(pygame.Vector2(0,0)))
 
     def handle_events(self):        
         for event in pygame.event.get():
@@ -39,6 +41,7 @@ class App():
     def draw(self):
         self.screen.fill("black")
         self.all_sprites.draw(self.screen)
+        pygame.display.update()
 
     def run(self):
         while self.running:
