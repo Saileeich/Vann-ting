@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-from wave_function import wave_function
+from wave_function import wave_function, x_wave_function
 import math
 
 class Player(pygame.sprite.Sprite):
@@ -13,7 +13,8 @@ class Player(pygame.sprite.Sprite):
         self.pos = pos
 
     def update(self):
-        self.image = pygame.transform.rotate(self.image_copy, (math.degrees(math.atan2(self.rect.width, wave_function(self.pos[0] + self.rect.width) - wave_function(self.pos[0]))) - 90))
-        
         self.pos[1] = wave_function(self.pos[0] + (self.rect.width/2)) - self.rect.height
+        self.pos[0] = x_wave_function(self.pos[1] + (self.rect.height/2)) - self.rect.width
         self.rect.topleft = self.pos
+        
+        self.image = pygame.transform.rotate(self.image_copy, (math.degrees(math.atan2(self.rect.width, wave_function(self.pos[0] + self.rect.width) - wave_function(self.pos[0]))) - 90))
