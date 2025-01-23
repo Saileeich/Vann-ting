@@ -13,7 +13,7 @@ class Player(pygame.sprite.Sprite):
         self.pos = pos
 
     def update(self):
-        self.image = pygame.transform.rotate(self.image_copy, -(math.degrees(math.atan2(self.rect.width, wave_function(self.pos[0] + self.rect.width) - wave_function(self.pos[0]))) - 90))
+        self.image = pygame.transform.rotate(self.image_copy, (math.degrees(math.atan2(self.rect.width, wave_function(self.pos[0] + self.rect.width) - wave_function(self.pos[0]))) - 90))
         
         self.pos[1] = wave_function(self.pos[0] + (self.rect.width/2)) - self.rect.height
         self.rect.topleft = self.pos

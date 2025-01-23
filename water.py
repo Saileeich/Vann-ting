@@ -9,7 +9,7 @@ class Water(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = pos
 
-        self.density = 20
+        self.density = 250
 
     def update(self, *args, **kwargs):
         self.create_water()
