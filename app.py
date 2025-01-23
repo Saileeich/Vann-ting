@@ -2,6 +2,8 @@ import pygame
 from pygame.locals import *
 
 from water import Water
+from player import Player
+from wave_function import wave_function
 
 class App():
     def __init__(self, WIDTH, HEIGHT, CAPTION, FPS):
@@ -23,6 +25,7 @@ class App():
 
     def start(self):
         self.all_sprites.add(Water(pygame.Vector2(0,0)))
+        self.all_sprites.add(Player("./Assets/boat.png", pygame.Vector2(200,00)))
 
     def handle_events(self):        
         for event in pygame.event.get():
@@ -36,6 +39,7 @@ class App():
                 self.running = False
 
     def update(self):
+
         self.all_sprites.update()
 
     def draw(self):
