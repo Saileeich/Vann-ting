@@ -43,6 +43,7 @@ class App():
 
     def draw(self):
         self.screen.fill("black")
+        self.screen.blit(pygame.image.load("./Assets/sky.png"), (0,0))
         self.all_sprites.draw(self.screen)
         pygame.display.update()
 

@@ -5,7 +5,7 @@ from wave_function import wave_function, boat_wave_function
 class Water(pygame.sprite.Sprite):
     def __init__(self, pos: pygame.Vector2, player):
         super().__init__()
-        self.image = pygame.surface.Surface(pygame.display.get_window_size())
+        self.image = pygame.surface.Surface(pygame.display.get_window_size(), pygame.SRCALPHA)
         self.rect = self.image.get_rect()
         self.rect.topleft = pos
         self.density = 250
