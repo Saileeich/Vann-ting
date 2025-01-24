@@ -22,8 +22,6 @@ class Player(pygame.sprite.Sprite):
         
         self.image = pygame.transform.rotate(self.image_copy, (math.degrees(math.atan2(self.rect.width, wave_function(self.draw_pos[0] + self.rect.width) - wave_function(self.draw_pos[0]))) - 90))
 
-        print(self.pos[0], self.draw_pos[0])
-
     def move(self, inputs):
         horizontal = inputs[pygame.K_RIGHT]-inputs[pygame.K_LEFT]
         self.pos[0] += 1*horizontal

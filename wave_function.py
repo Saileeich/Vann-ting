@@ -11,7 +11,7 @@ def wave_function(x):
 
 def x_wave_function(y, x):
     WAVE_HEIGHT = x
-    return AMPLITUDE * math.cos(WAVE_LENGTH*(y) - WAVE_SPEED*pygame.time.get_ticks()) + WAVE_HEIGHT
+    return AMPLITUDE * math.cos(WAVE_LENGTH*(y) + WAVE_SPEED*pygame.time.get_ticks()) + WAVE_HEIGHT
 
 def boat_wave_function(x, boat_x):
     a = 2

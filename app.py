@@ -26,9 +26,9 @@ class App():
         self.floating_objects = []
         self.floating_objects.append(Player("./Assets/boat.png", pygame.Vector2(168, 0)))
         #self.floating_objects.append(Player("./Assets/boat.png", pygame.Vector2(318, 0)))
-        self.all_sprites.add(Water(pygame.Vector2(0, 0), self.floating_objects))
         for floater in self.floating_objects:
             self.all_sprites.add(floater)
+        self.all_sprites.add(Water(pygame.Vector2(0, 0), self.floating_objects))
 
     def handle_events(self):        
         for event in pygame.event.get():
@@ -46,7 +46,7 @@ class App():
 
     def draw(self):
         self.screen.fill("black")
-        self.screen.blit(pygame.image.load("./Assets/sky.png"), (0,0))
+        self.screen.blit(pygame.image.load("./Assets/water.png"), (0,0))
         self.all_sprites.draw(self.screen)
         pygame.display.update()
 

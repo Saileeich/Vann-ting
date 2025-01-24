@@ -15,7 +15,7 @@ class Water(pygame.sprite.Sprite):
         self.create_water()
 
     def create_column(self, x, width):
-        pygame.draw.polygon(self.image, (0,100,200), [pygame.Vector2(x, self.rect.bottom), pygame.Vector2(x+width, self.rect.bottom), pygame.Vector2(x+width, self.total_wave(x+width)), pygame.Vector2(x, self.total_wave(x))])
+        pygame.draw.polygon(self.image, (0,100,200, 100), [pygame.Vector2(x, self.rect.bottom), pygame.Vector2(x+width, self.rect.bottom), pygame.Vector2(x+width, self.total_wave(x+width)), pygame.Vector2(x, self.total_wave(x))])
 
     def total_wave(self, x):
         total_wave = wave_function(x)
