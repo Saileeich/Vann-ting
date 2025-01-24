@@ -23,23 +23,26 @@ class App():
             self.inputs[key_code] = 0
 
     def start(self):
-        self.player = Player("./Assets/boat.png", pygame.Vector2(218, 0))
-        self.all_sprites.add(Water(pygame.Vector2(0, 0), self.player))
-        self.all_sprites.add(self.player)
+        self.floating_objects = []
+        self.floating_objects.append(Player("./Assets/boat.png", pygame.Vector2(168, 0)))
+        #self.floating_objects.append(Player("./Assets/boat.png", pygame.Vector2(318, 0)))
+        self.all_sprites.add(Water(pygame.Vector2(0, 0), self.floating_objects))
+        for floater in self.floating_objects:
+            self.all_sprites.add(floater)
 
     def handle_events(self):        
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key in self.key_codes:
-                    self.inputs[str(event.key)] = 1
+                    self.inputs[event.key] = 1
             elif event.type == KEYUP:
                 if event.key in self.key_codes:
-                    self.inputs[str(event.key)] = 0
+                    self.inputs[event.key] = 0
             elif event.type == QUIT:
                 self.running = False
 
     def update(self):
-        self.all_sprites.update()
+        self.all_sprites.update(self.inputs)
 
     def draw(self):
         self.screen.fill("black")
