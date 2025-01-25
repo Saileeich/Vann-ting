@@ -7,7 +7,6 @@ class Camera:
 
         self.bg1 = pygame.image.load("./Assets/bg1.png")
         self.bg2 = pygame.image.load("./Assets/bg2.png")
-        self.bg2.set_colorkey((0,0,0))
         self.bg3 = pygame.image.load("./Assets/bg3.png")
         self.bg4 = pygame.image.load("./Assets/bg4.png")
 
