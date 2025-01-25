@@ -11,9 +11,15 @@ class Water(pygame.sprite.Sprite):
         self.density = 500
         self.floating_objects = floating_objects
 
-    def update(self, inputs, *args, **kwargs):
+    def update(self, inputs):
         self.create_water()
 
+    def create_water(self):
+        self.image.fill((0,0,0,0))
+        width = self.rect.right / self.density
+        for i in range(self.density):
+            self.create_column(i*width, width)
+            
     def create_column(self, x, width):
         pygame.draw.polygon(self.image, (0,100,200, 100), [pygame.Vector2(x, self.rect.bottom), pygame.Vector2(x+width, self.rect.bottom), pygame.Vector2(x+width, self.total_wave(x+width)), pygame.Vector2(x, self.total_wave(x))])
 
@@ -22,9 +28,3 @@ class Water(pygame.sprite.Sprite):
         for floater in self.floating_objects:
             total_wave += boat_wave_function(x, floater.rect.centerx)
         return total_wave
-
-    def create_water(self):
-        self.image.fill((0,0,0,0))
-        width = self.rect.right / self.density
-        for i in range(self.density):
-            self.create_column(i*width, width)
