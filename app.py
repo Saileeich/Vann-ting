@@ -3,6 +3,7 @@ from pygame.locals import *
 
 from water import Water
 from player import Player
+from camera import Camera
 
 class App():
     def __init__(self, WIDTH, HEIGHT, CAPTION, FPS):
@@ -23,6 +24,8 @@ class App():
             self.inputs[key_code] = 0
 
     def start(self):
+        self.camera = Camera()
+
         self.floating_objects = []
         self.floating_objects.append(Player("./Assets/boat.png", pygame.Vector2(168, 0)))
         #self.floating_objects.append(Player("./Assets/boat.png", pygame.Vector2(318, 0)))
@@ -42,11 +45,12 @@ class App():
                 self.running = False
 
     def update(self):
-        self.all_sprites.update(self.inputs)
+        self.all_sprites.update(self.inputs, self.camera)
 
     def draw(self):
         self.screen.fill("black")
-        self.screen.blit(pygame.image.load("./Assets/water.png"), (0,0))
+        #self.screen.blit(pygame.image.load("./Assets/bg1.png"), (0,0))
+        self.camera.draw_background(self.screen)
         self.all_sprites.draw(self.screen)
         pygame.display.update()
 

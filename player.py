@@ -13,15 +13,16 @@ class Player(pygame.sprite.Sprite):
         self.pos = pos.copy()
         self.draw_pos = pos.copy()
 
-    def update(self, inputs):
+    def update(self, inputs, camera):
         self.move(inputs)
+        camera.follow(self.pos[0])
 
-        self.draw_pos[0] = x_wave_function(self.pos[1] + (self.rect.height/2), self.pos[0])
-        self.draw_pos[1] = wave_function(self.draw_pos[0] + (self.rect.width/2)) - self.rect.height
+        self.draw_pos[0] = x_wave_function(self.pos[1], camera.width/2 - (self.rect.width/2))
+        self.draw_pos[1] = wave_function(self.draw_pos[0] + (camera.x-camera.width/2) + (self.rect.width/2)) - self.rect.height
         self.rect.topleft = self.draw_pos
         
-        self.image = pygame.transform.rotate(self.image_copy, (math.degrees(math.atan2(self.rect.width, wave_function(self.draw_pos[0] + self.rect.width) - wave_function(self.draw_pos[0]))) - 90))
+        self.image = pygame.transform.rotate(self.image_copy, (math.degrees(math.atan2(self.rect.width, wave_function(self.draw_pos[0] + (camera.x-camera.width/2) + self.rect.width) - wave_function(self.draw_pos[0] + (camera.x-camera.width/2)))) - 90))
 
     def move(self, inputs):
-        horizontal = inputs[pygame.K_RIGHT]-inputs[pygame.K_LEFT]
+        horizontal = (1 if inputs[pygame.K_RIGHT] or inputs[pygame.K_d] else 0) - (1 if inputs[pygame.K_LEFT] or inputs[pygame.K_a] else 0)
         self.pos[0] += 1*horizontal
