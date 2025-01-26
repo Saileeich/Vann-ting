@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.move(inputs)
         camera.follow(self.pos[0])
 
-        self.draw_pos[0] = x_wave_function(self.pos[1], camera.width/2 - (self.rect.width/2))
+        self.draw_pos[0] = x_wave_function(self.draw_pos[1], camera.width/2 - (self.rect.width/2))
         self.draw_pos[1] = wave_function(self.draw_pos[0] + (camera.x-camera.width/2) + (self.rect.width/2)) - self.rect.height
         self.rect.topleft = self.draw_pos
         
