@@ -20,8 +20,8 @@ class Camera:
     def create_background(self):
         background = pygame.surface.Surface(pygame.display.get_window_size())
         background.fill("black")
-        background.blit(self.bg4, (-self.x*0.2 - self.width/2, 0))
-        background.blit(self.bg3, (-self.x*0.5 - self.width/2, 0))
-        background.blit(self.bg2, (-self.x*0.8 - self.width/2, 0))
+        background.blit(self.bg4, (-self.x*0.2 - self.width/2 + pygame.display.get_window_size()[0]/2, 0))
+        background.blit(self.bg3, (-self.x*0.5 - self.width/2 + pygame.display.get_window_size()[0]/2, 0))
+        background.blit(self.bg2, (-self.x*0.8 - self.width/2 + pygame.display.get_window_size()[0]/2, 0))
         background.blit(self.bg1, (0, 0))
         return background
