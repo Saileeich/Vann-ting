@@ -11,7 +11,7 @@ class Water(pygame.sprite.Sprite):
         self.density = 500
         self.floating_objects = floating_objects
 
-    def update(self, inputs, camera):
+    def update(self, inputs, camera, all_sprites):
         self.create_water(camera.x-camera.width/2)
 
     def create_water(self, offset):
