@@ -2,7 +2,7 @@ from app import App
 
 def main():
     WIDTH, HEIGHT = 500, 500
-    CAPTION = "Water go brr"
+    CAPTION = "Øygarden Simulator 2D"
     FPS = 24
     app = App(WIDTH, HEIGHT, CAPTION, FPS)
     app.run()

@@ -24,7 +24,7 @@ class Water(pygame.sprite.Sprite):
         pygame.draw.polygon(self.image, (0,100,200, 100), [pygame.Vector2(x, self.rect.bottom), pygame.Vector2(x+width, self.rect.bottom), pygame.Vector2(x+width, self.total_wave(x+width, offset)), pygame.Vector2(x, self.total_wave(x, offset))])
 
     def total_wave(self, x, offset):
-        total_wave = wave_function(x+offset)
+        total_wave = wave_function(x+offset) + pygame.display.get_window_size()[0]/4
         for floater in self.floating_objects:
-            total_wave += boat_wave_function(x, floater.rect.centerx)
+            total_wave += boat_wave_function(x, floater.rect.centerx) 
         return total_wave
